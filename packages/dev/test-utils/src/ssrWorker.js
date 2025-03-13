@@ -21,6 +21,13 @@ ignoreStyles.default(undefined, (module) => {
   module.exports = identityObjectProxy;
 });
 
+// some environments may partially define window without document
+// removing this can break tests and/or checks that rely on detecting true browser environment
+// always check for both window AND window.document existence to more robustly
+// before assuming that the current environment is the browser
+// eslint-disable-next-line no-global-assign
+window = {};
+
 require('@babel/register')({
   extensions: ['.js', '.ts', '.tsx']
 });
