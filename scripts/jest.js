@@ -13,9 +13,15 @@
 const {spawn} = require('child_process');
 
 let args = [...process.argv.slice(2)];
+let cmd = 'jest';
+
+if (process.platform === 'win32') {
+  cmd = 'cmd';
+  args = ['/c', 'jest', ...args];
+}
 
 process.env.NODE_ICU_DATA = 'node_modules/full-icu';
-let jest = spawn('jest', args, {
+let jest = spawn(cmd, args, {
   stdio: 'inherit'
 });
 
