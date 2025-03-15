@@ -65,7 +65,8 @@ const MyGridListItem = (props: GridListItemProps) => {
 
 GridListExample.story = {
   args: {
-    layout: 'stack'
+    layout: 'stack',
+    shouldSelectOnPressUp: false
   },
   argTypes: {
     layout: {
